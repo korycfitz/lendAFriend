@@ -95,7 +95,7 @@ nav li {
 
 .header-logo-container {
   margin: auto;
-  padding: 10px 20px 0;
+  padding: 5px 20px;
   max-width: 500px;
 }
 
@@ -155,11 +155,6 @@ nav li {
 
 .page-header img:first-of-type {
   margin-left: 20px;
-}
-
-.header-img {
-  max-width: 100%;
-  max-height: 100%;
 }
 
 .page-content {
@@ -247,6 +242,7 @@ nav li {
     background: var(--nav-bg-ff);
     border: var(--borders);
     border-radius: 18px;
+    
   }
 
   nav {
@@ -255,9 +251,10 @@ nav li {
 
   .header-logo-container {
     /* visual fix to help align logo */
-    padding-top: 6px;
-    width: 256px;
-    height: 35px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: 100%; /* Take the full width of the parent container */
   }
 
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
