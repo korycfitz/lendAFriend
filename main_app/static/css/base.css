@@ -47,7 +47,11 @@ body {
 }
 
 header {
+    /* padding-top: 6px;
+    width: 256px;
+    height: 35px; */
   width: 100%;
+  height: 256px;
   background: var(--nav-bg-ff); /* rgba(104, 197, 248, .9) */
   border-bottom: var(--borders);
 }
@@ -155,6 +159,7 @@ nav li {
 
 .page-header img:first-of-type {
   margin-left: 20px;
+  
 }
 
 .page-content {
@@ -163,6 +168,8 @@ nav li {
 
 @media only screen and (min-width: 768px) {
   header {
+    width: 100%;
+    height: 100%;
     position: sticky;
     display: flex;
     flex-direction: row;
@@ -184,6 +191,9 @@ nav li {
   /* visual fix to help align logo */
   .header-logo-container {
     padding-top: 3px;
+    /* padding-top: 6px;
+    width: 256px;
+    height: 35px; */
   }
 
   nav {
@@ -206,7 +216,7 @@ nav li {
   
   .page-header img {
     height: 50px;
-    margin-left:20px;
+    margin-left: 20px;
   }
   
   .page-header img:first-of-type {
@@ -255,8 +265,11 @@ nav li {
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
     width: 100%; /* Take the full width of the parent container */
+    /* padding-top: 6px;
+    width: 256px;
+    height: 35px; */
   }
-
+  
   @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     header {
       -webkit-backdrop-filter: none;
