@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 # Add the Cat class & list and view function below the imports
 
 # Define the home view
