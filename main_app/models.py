@@ -8,3 +8,5 @@ class Loan(models.Model):
   dateDue = models.DateField()
   description = models.TextField(max_length=250)
 
+  def __str__(self):
+    return self.creditor
