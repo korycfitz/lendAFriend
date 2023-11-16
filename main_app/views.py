@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # Add the Cat class & list and view function below the imports
-
+from .models import Cat
 # Define the home view
 def home(request):
   return render(request, 'home.html')
@@ -10,6 +10,7 @@ def about(request):
 
 # Add new view
 def loan_index(request):
+  loans = Loan.objects.all()
   return render(request, 'loans/index.html', { 'loans': loans })
 
 class Loan:  # Note that parens are optional if not inheriting from another class
