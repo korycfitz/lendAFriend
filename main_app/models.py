@@ -10,3 +10,4 @@ class Loan(models.Model):
 
   def __str__(self):
     return self.creditor
+  
