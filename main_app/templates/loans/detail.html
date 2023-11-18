@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/loans/loan-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="loan-container">
+  <div class="loan-img">
+    <img src="{% static 'images/logo.png' %}" alt="Loan Picture" />
+  </div>
+  <div class="loan-details">
+    <h1>{{ loan.creditor }}</h1>
+    {% if loan.dueDate %} 
+      <p> This loan for {{ loan.amount }} was created on {{ loan.dateCreated }} by {{ loan.creditor }}</p>
+      <p> This loan is due on {{ loan.dateDue }} by {{ loan.debtor }}</p> 
+    {% else %}
+      <p> This Loan has no due date </p>
+    {% endif %}
+    <p> Note: {{ loan.description }}
+  </div>
+</section>
+
+{% endblock %}
