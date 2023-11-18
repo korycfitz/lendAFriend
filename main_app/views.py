@@ -29,7 +29,7 @@ class Loan:  # Note that parens are optional if not inheriting from another clas
     self.description = description
 
 loans = [
-  Loan(datetime.now().date(), 'Lolo', 'tabby', 1200, datetime.now().date(), "rent"),
-  Loan(datetime.now().date(), 'Mike', 'Kory', 500, datetime.now().date(), "books"),
-  Loan(datetime.now().date(), 'John', 'Smith', 85, datetime(2023, 11, 17).date(), "ticket"),
+  Loan(datetime.now().date(), 'Lolo', 'tabby', 1200, datetime(2024, 7, 16).date(), "rent"),
+  Loan(datetime.now().date(), 'kyle', 'kory', 100, datetime(2024, 1, 17).date(), "temp loan"),
+  Loan(datetime.now().date(), 'klay', 'josh allen', 85, datetime(2023, 12, 31).date(), "football"),
 ]
