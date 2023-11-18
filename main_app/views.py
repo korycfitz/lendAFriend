@@ -31,5 +31,5 @@ class Loan:  # Note that parens are optional if not inheriting from another clas
 loans = [
   Loan(datetime.now().date(), 'Lolo', 'tabby', 1200, datetime.now().date(), "rent"),
   Loan(datetime.now().date(), 'Mike', 'Kory', 500, datetime.now().date(), "books"),
-  Loan(datetime.now().date(), 'John', 'Smith', 85, datetime.now().date(), "ticket"),
+  Loan(datetime.now().date(), 'John', 'Smith', 85, datetime(2023, 11, 17).date(), "ticket"),
 ]
