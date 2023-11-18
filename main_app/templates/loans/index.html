@@ -31,7 +31,7 @@
             >
           </div>
           <h2 class="card-title">{{ loan.creditor }}</h2>
-          {% if loan.dueDate != 0 %} 
+          {% if loan.dueDate %} 
             <p> This loan for {{ loan.amount }} was created on {{ loan.dateCreated }} by {{ loan.creditor }}</p>
             <p> This loan is due on {{ loan.dateDue }} by {{ loan.debtor }}</p> 
             <p> Note: {{ loan.description }}
