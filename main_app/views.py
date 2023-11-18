@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from datetime import datetime
 # Add the Loan class & list and view function below the imports
 from .models import Loan
 
@@ -28,7 +29,7 @@ class Loan:  # Note that parens are optional if not inheriting from another clas
     self.description = description
 
 loans = [
-  Loan('10/31/23', 'Lolo', 'tabby', 1200, '1/1/24', "rent"),
-  Loan('11/1/23', 'Mike', 'Kory', 500, '12/31/23', "books"),
-  Loan('11/16/23', 'John', 'Smith', 85, '1/1/24', "ticket"),
+  Loan(datetime.now().date(), 'Lolo', 'tabby', 1200, datetime.now().date(), "rent"),
+  Loan(datetime.now().date(), 'Mike', 'Kory', 500, datetime.now().date(), "books"),
+  Loan(datetime.now().date(), 'John', 'Smith', 85, datetime.now().date(), "ticket"),
 ]
