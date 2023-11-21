@@ -1,12 +1,11 @@
 from django.db import models
-from datetime import datetime
 
 class Loan(models.Model):
-  dateCreated = models.DateField()
-  creditor = models.CharField(max_length=100)
-  debtor = models.CharField(max_length=100)
+  creditor = models.TextField()
+  dateCreated = models.CharField(max_length=100)
+  debtor = models.TextField()
   amount = models.IntegerField()
-  dateDue = models.DateField()
+  dateDue = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
 
   def __str__(self):
