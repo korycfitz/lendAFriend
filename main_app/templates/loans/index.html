@@ -22,7 +22,7 @@
 <section class="card-container">
   {% for loan in loans %}
     <div class="card">
-      <a href="/loans/{{ loan.id }}">
+      <a href="{% url 'loan-detail' loan.id %}">
         <div class="card-content">
           <div class="card-img-container">
             <img 
