@@ -1,4 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from datetime import datetime
 # Add the Loan class & list and view function below the imports
 from .models import Loan
@@ -20,11 +27,10 @@ def loan_detail(request, loan_id):
   return render(request, 'loans/detail.html', { 'loan': loan })
 
 class Loan:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, dateCreated, creditor, debtor, amount, dateDue, description):
-    self.dateCreated = dateCreated
+  def __init__(self, creditor, dateCreated, debtor, amount, dateDue, description):
     self.creditor = creditor
+    self.dateCreated = dateCreated
     self.debtor = debtor
     self.amount = amount
     self.dateDue = dateDue
     self.description = description
-
