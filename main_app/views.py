@@ -25,13 +25,3 @@ def loan_index(request):
 def loan_detail(request, loan_id):
   loan = Loan.objects.get(id=loan_id)
   return render(request, 'loans/detail.html', { 'loan': loan })
-
-class Loan:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, name, creditor, dateCreated, debtor, amount, dateDue, description):
-    self.name = name
-    self.creditor = creditor
-    self.dateCreated = dateCreated
-    self.debtor = debtor
-    self.amount = amount
-    self.dateDue = dateDue
-    self.description = description
