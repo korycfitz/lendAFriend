@@ -30,9 +30,9 @@
               alt="A Loan"
             >
           </div>
-          <h2 class="card-title">{{ loan.creditor }}</h2>
+          <h2 class="card-title">{{ loan.name }}</h2>
           {% if loan.dateDue %} 
-            <p> This loan for {{ loan.amount }} was created on {{ loan.dateCreated }} by {{ loan.creditor }}</p>
+            <p> This loan for ${{ loan.amount }} was created on {{ loan.dateCreated }} by {{ loan.creditor }}</p>
             <p> This loan is due on {{ loan.dateDue }} by {{ loan.debtor }}</p> 
           {% else %}
           <p> This Loan has no due date </p>
