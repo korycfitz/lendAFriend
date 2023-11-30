@@ -27,7 +27,8 @@ def loan_detail(request, loan_id):
   return render(request, 'loans/detail.html', { 'loan': loan })
 
 class Loan:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, creditor, dateCreated, debtor, amount, dateDue, description):
+  def __init__(self, name, creditor, dateCreated, debtor, amount, dateDue, description):
+    self.name = name
     self.creditor = creditor
     self.dateCreated = dateCreated
     self.debtor = debtor

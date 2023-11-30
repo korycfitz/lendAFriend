@@ -4,13 +4,14 @@ from datetime import datetime
 
 
 class Loan(models.Model):
-  creditor = models.CharField(max_length=250)
+  name = models.CharField()
+  creditor = models.IntegerField()
   dateCreated = models.CharField(max_length=100)
-  debtor = models.CharField(max_length=100)
+  debtor = models.IntegerField()
   amount = models.IntegerField()
   dateDue = models.CharField(max_length=100)
   description = models.TextField(max_length=250)
 
   def __str__(self):
-    return self.creditor
+    return self.name
   
