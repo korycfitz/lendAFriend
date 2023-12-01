@@ -6,4 +6,5 @@ urlpatterns = [
   path('about/', views.about, name='about'),
   path('loans/', views.loan_index, name='loan-index'),
   path('loans/<int:loan_id>/', views.loan_detail, name='loan-detail'),
+  path('loans/create/', views.LoanCreate.as_view(), name='loan-create'),
 ]
