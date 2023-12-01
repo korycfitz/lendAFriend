@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Loan
 
 # Define the home view
@@ -21,3 +21,12 @@ def loan_detail(request, loan_id):
 class LoanCreate(CreateView):
   model = Loan
   fields = '__all__'
+
+class LoanUpdate(UpdateView):
+  model = Loan
+  #disallow Loan creator to change the name, dateCreated, debtor and amount so that the creditor can't just update the amount after it is accepted by the debtor
+  fields = ['dateDue', 'description']
+
+class LoanDelete(DeleteView):
+  model = Loan
+  success_url = '/loans/'
