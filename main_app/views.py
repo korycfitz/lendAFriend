@@ -21,3 +21,4 @@ def loan_detail(request, loan_id):
 class LoanCreate(CreateView):
   model = Loan
   fields = '__all__'
+  success_url = '/cats/'
