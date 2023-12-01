@@ -27,6 +27,11 @@
       <p> This Loan has no due date </p>
     {% endif %}
     <div> Note: {{ loan.description }} </div>
+    <p>{{ cat.description }}</p>
+    <div class="loan-actions">
+      <a href="{% url 'loan-update' loan.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'loan-delete' loan.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
 </section>
 
