@@ -17,3 +17,7 @@ def loan_index(request):
 def loan_detail(request, loan_id):
   loan = Loan.objects.get(id=loan_id)
   return render(request, 'loans/detail.html', { 'loan': loan })
+
+class LoanCreate(CreateView):
+  model = Loan
+  fields = '__all__'
