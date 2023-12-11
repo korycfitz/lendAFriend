@@ -6,9 +6,12 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="page-header">
-  <h1>Create a Loan</h1>
+  {% if loan %}
+    <h1>Edit {{ loan.name }}</h1>
+  {% else %}
+    <h1>Create a Loan</h1>
+  {% endif %}
   <img src="{% static 'images/nerd-cat.svg' %}" alt="A Loan"/>
 </div>
 {% comment %} 
