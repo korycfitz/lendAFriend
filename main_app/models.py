@@ -29,7 +29,11 @@ class Loan(models.Model):
 
 class Debt(models.Model):
   name = models.CharField()
-  creditor = models.IntegerField() 
+  creditor = models.IntegerField(
+    max_length=1, 
+    choices=CREDITORS,
+    default=CREDITORS[0][0]
+  ) 
   dateCreated = models.DateField() 
   amount = models.IntegerField()
   dateDue = models.DateField()
