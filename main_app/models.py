@@ -18,3 +18,12 @@ class Loan(models.Model):
   
   def get_absolute_url(self):
     return reverse('loan-detail', kwargs={'loan_id': self.id})
+
+class Debt(models.Model):
+  name = models.CharField()
+  creditor = models.IntegerField() 
+  dateCreated = models.DateField() 
+  debtor = models.IntegerField() #should ref. Loan
+  amount = models.IntegerField()
+  dateDue = models.DateField()
+  description = models.TextField(max_length=250)
