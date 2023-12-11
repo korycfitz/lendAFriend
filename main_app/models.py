@@ -4,13 +4,21 @@ from django.contrib.auth.models import User
 from datetime import datetime
 
 
+CREDITORS = (
+  ('1', 'User 1'),
+  ('2', 'User 2'),
+  ('3', 'User 3'),
+  ('4', 'User 4'),
+  ('5', 'User 5')
+)
+
 class Loan(models.Model):
   name = models.CharField()
-  creditor = models.IntegerField()
-  dateCreated = models.CharField(max_length=100)
-  debtor = models.IntegerField()
+  creditor = models.IntegerField() #should ref Profile
+  dateCreated = models.DateField()
+  debtor = models.IntegerField() #should ref Debt
   amount = models.IntegerField()
-  dateDue = models.CharField(max_length=100)
+  dateDue = models.DateField()
   description = models.TextField(max_length=250)
 
   def __str__(self):
@@ -23,7 +31,10 @@ class Debt(models.Model):
   name = models.CharField()
   creditor = models.IntegerField() 
   dateCreated = models.DateField() 
-  debtor = models.IntegerField() #should ref. Loan
   amount = models.IntegerField()
   dateDue = models.DateField()
-  description = models.TextField(max_length=250)
+  description = models.TextField()
+
+  #make choices for creating loan
+  def __str__(self):
+    return self.name
