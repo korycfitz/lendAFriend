@@ -21,7 +21,7 @@ class Loan(models.Model):
 class Debt(models.Model):
   name = models.CharField()
   # Create a loan_id column in the database
-  creditor = models.ForeignKey(Loan, on_delete=models.CASCADE)
+  creditor = models.OneToOneField(Loan, on_delete=models.CASCADE)
   dateCreated = models.DateField() 
   amount = models.IntegerField()
   dateDue = models.DateField()
