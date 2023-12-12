@@ -1,17 +1,17 @@
 from django.db import models
 from django.urls import reverse, timezone
 from django.contrib.auth.models import User
-from datetime import datetime
 
 class Loan(models.Model):
-  name = models.CharField()
-  creditor = models.IntegerField() #should ref Profile
+  name = models.CharField(max_length=100)  # Adjust the max_length as per your requirements
+  creditor = models.IntegerField()  # Should reference Profile - consider using ForeignKey instead of IntegerField
   dateCreated = models.DateField(default=timezone.now().date)
-  debtor = models.IntegerField() #should ref Debt
-  amount = models.IntegerField()
-  dateDue = models.DateField(default=timezone.now().date)
-  description = models.TextField(max_length=250)
-
+  debtor = models.OneToOneField(
+        'Debt',
+        on_delete=models.CASCADE,
+        null=True,  # Allows null values
+        default=None  # Sets default value to None
+  )
   def __str__(self):
     return self.name
   
