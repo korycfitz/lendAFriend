@@ -7,10 +7,10 @@ class Loan(models.Model):
   creditor = models.IntegerField()  # Should reference Profile - consider using ForeignKey instead of IntegerField
   dateCreated = models.DateField(default=timezone.now().date)
   debtor = models.OneToOneField(
-        'Debt',
-        on_delete=models.CASCADE,
-        null=True,  # Allows null values
-        default=None  # Sets default value to None
+    'Debt',
+    on_delete=models.CASCADE,
+    null=True,  # Allows null values
+    default=None  # Sets default value to None
   )
   amount = models.IntegerField()
   dateDue = models.DateField(default=timezone.now().date)
@@ -25,7 +25,12 @@ class Loan(models.Model):
 class Debt(models.Model):
   name = models.CharField()
   # Create a loan_id column in the database
-  creditor = models.OneToOneField(Loan, on_delete=models.CASCADE)
+  creditor = models.OneToOneField(
+    'Debt',
+    on_delete=models.CASCADE,
+    null=True,  # Allows null values
+    default=None  # Sets default value to None
+  )
   dateCreated = models.DateField(default=timezone.now().date)
   amount = models.IntegerField()
   dateDue = models.DateField(default=timezone.now().date)
