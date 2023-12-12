@@ -11,7 +11,9 @@ class Loan(models.Model):
   )
   debtor = models.IntegerField() #should ref Debt
   amount = models.IntegerField()
-  dateDue = models.DateField()
+  dateDue = models.DateField(
+    default = datetime.datetime.now().date()
+  )
   description = models.TextField(max_length=250)
 
   def __str__(self):
@@ -28,7 +30,9 @@ class Debt(models.Model):
     default = datetime.datetime.now().date()
   ) 
   amount = models.IntegerField()
-  dateDue = models.DateField()
+  dateDue = models.DateField(
+    default = datetime.datetime.now().date()
+  )
   description = models.TextField()
 
   #make choices for creating loan
