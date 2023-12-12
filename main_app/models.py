@@ -1,41 +1,29 @@
 from django.db import models
-from django.urls import reverse, timezone
-from django.contrib.auth.models import User
+from django.urls import reverse
+from django.utils import timezone
 
 class Loan(models.Model):
-  name = models.CharField(max_length=100)  # Adjust the max_length as per your requirements
-  creditor = models.IntegerField()  # Should reference Profile - consider using ForeignKey instead of IntegerField
-  dateCreated = models.DateField(default=timezone.now().date)
-  debtor = models.OneToOneField(
-    'Debt',
-    on_delete=models.CASCADE,
-    null=True,  # Allows null values
-    default=None  # Sets default value to None
-  )
-  amount = models.IntegerField()
-  dateDue = models.DateField(default=timezone.now().date)
-  description = models.TextField(max_length=250)
-  
-  def __str__(self):
-    return self.name
-  
-  def get_absolute_url(self):
-    return reverse('loan-detail', kwargs={'loan_id': self.id})
+    name = models.CharField(max_length=100)
+    creditor = models.IntegerField()  # Consider using ForeignKey to reference a User or Profile model
+    dateCreated = models.DateField(default=timezone.now)
+    debtor = models.ForeignKey('Debt', on_delete=models.CASCADE, null=True, default=None)
+    amount = models.IntegerField()
+    dateDue = models.DateField(default=timezone.now)
+    description = models.TextField(max_length=250)
+    
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('loan-detail', kwargs={'loan_id': self.id})
 
 class Debt(models.Model):
-  name = models.CharField()
-  # Create a loan_id column in the database
-  creditor = models.OneToOneField(
-    'Debt',
-    on_delete=models.CASCADE,
-    null=True,  # Allows null values
-    default=None  # Sets default value to None
-  )
-  dateCreated = models.DateField(default=timezone.now().date)
-  amount = models.IntegerField()
-  dateDue = models.DateField(default=timezone.now().date)
-  description = models.TextField()
-
-  #make choices for creating loan
-  def __str__(self):
-    return self.name
+    name = models.CharField(max_length=100)  # Define max_length for CharField
+    creditor = models.ForeignKey('Loan', on_delete=models.CASCADE, null=True, default=None)
+    dateCreated = models.DateField(default=timezone.now)
+    amount = models.IntegerField()
+    dateDue = models.DateField(default=timezone.now)
+    description = models.TextField()
+    
+    def __str__(self):
+        return self.name
