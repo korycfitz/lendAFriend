@@ -3,15 +3,6 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from datetime import datetime
 
-
-CREDITORS = (
-  ('1', 'User 1'),
-  ('2', 'User 2'),
-  ('3', 'User 3'),
-  ('4', 'User 4'),
-  ('5', 'User 5')
-)
-
 class Loan(models.Model):
   name = models.CharField()
   creditor = models.IntegerField() #should ref Profile
@@ -29,11 +20,8 @@ class Loan(models.Model):
 
 class Debt(models.Model):
   name = models.CharField()
-  creditor = models.IntegerField(
-    max_length=1, 
-    choices=CREDITORS,
-    default=CREDITORS[0][0]
-  ) 
+  # Create a loan_id column in the database
+  creditor = models.ForeignKey(Loan, on_delete=models.CASCADE)
   dateCreated = models.DateField() 
   amount = models.IntegerField()
   dateDue = models.DateField()
