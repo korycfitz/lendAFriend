@@ -12,6 +12,10 @@ class Loan(models.Model):
         null=True,  # Allows null values
         default=None  # Sets default value to None
   )
+  amount = models.IntegerField()
+  dateDue = models.DateField(default=timezone.now().date)
+  description = models.TextField(max_length=250)
+  
   def __str__(self):
     return self.name
   
