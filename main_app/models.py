@@ -6,7 +6,9 @@ from datetime import datetime
 class Loan(models.Model):
   name = models.CharField()
   creditor = models.IntegerField() #should ref Profile
-  dateCreated = models.DateField()
+  dateCreated = models.DateField(
+    default = datetime.datetime.now().date()
+  )
   debtor = models.IntegerField() #should ref Debt
   amount = models.IntegerField()
   dateDue = models.DateField()
@@ -22,7 +24,9 @@ class Debt(models.Model):
   name = models.CharField()
   # Create a loan_id column in the database
   creditor = models.OneToOneField(Loan, on_delete=models.CASCADE)
-  dateCreated = models.DateField() 
+  dateCreated = models.DateField(
+    default = datetime.datetime.now().date()
+  ) 
   amount = models.IntegerField()
   dateDue = models.DateField()
   description = models.TextField()
