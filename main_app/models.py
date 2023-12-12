@@ -1,19 +1,15 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, timezone
 from django.contrib.auth.models import User
 from datetime import datetime
 
 class Loan(models.Model):
   name = models.CharField()
   creditor = models.IntegerField() #should ref Profile
-  dateCreated = models.DateField(
-    default = datetime.datetime.now().date()
-  )
+  dateCreated = models.DateField(default=timezone.now().date)
   debtor = models.IntegerField() #should ref Debt
   amount = models.IntegerField()
-  dateDue = models.DateField(
-    default = datetime.datetime.now().date()
-  )
+  dateDue = models.DateField(default=timezone.now().date)
   description = models.TextField(max_length=250)
 
   def __str__(self):
@@ -26,13 +22,9 @@ class Debt(models.Model):
   name = models.CharField()
   # Create a loan_id column in the database
   creditor = models.OneToOneField(Loan, on_delete=models.CASCADE)
-  dateCreated = models.DateField(
-    default = datetime.datetime.now().date()
-  ) 
+  dateCreated = models.DateField(default=timezone.now().date)
   amount = models.IntegerField()
-  dateDue = models.DateField(
-    default = datetime.datetime.now().date()
-  )
+  dateDue = models.DateField(default=timezone.now().date)
   description = models.TextField()
 
   #make choices for creating loan
