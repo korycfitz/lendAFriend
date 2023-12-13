@@ -4,7 +4,7 @@ from django.utils import timezone
 
 class Loan(models.Model):
     name = models.CharField(max_length=100)
-    creditor = models.IntegerField()  # Consider using ForeignKey to reference a User or Profile model
+    creditor = models.IntegerField()  # Consider using ForeignKey to reference a User or Profile model #this will store the id of the logged in user who creates the model
     dateCreated = models.DateField(default=timezone.now)
     debtor = models.ForeignKey('Debt', on_delete=models.CASCADE, null=True, default=None)
     amount = models.IntegerField()
@@ -21,6 +21,7 @@ class Debt(models.Model):
     name = models.CharField(max_length=100)  # Define max_length for CharField
     creditor = models.ForeignKey('Loan', on_delete=models.CASCADE, null=True, default=None)
     dateCreated = models.DateField(default=timezone.now)
+    debtor = models.IntegerField()  # Consider using ForeignKey to reference a User or Profile model #this will store the id of the logged in user who creates the model
     amount = models.IntegerField()
     dateDue = models.DateField(default=timezone.now)
     description = models.TextField()

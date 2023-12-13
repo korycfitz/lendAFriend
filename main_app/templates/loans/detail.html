@@ -21,13 +21,13 @@
   <div class="loan-details">
     <h1>{{ loan.name }}</h1>
     {% if loan.dateDue %} 
-      <p> This loan for ${{ loan.amount }} was created on {{ loan.dateCreated }} by {{ loan.creditor }}</p>
+      <p> This loan for ${{ loan.amount }} was created on {{ loan.dateCreated }} </p>
       <p> This loan is due on {{ loan.dateDue }} by {{ loan.debtor }}</p> 
     {% else %}
       <p> This Loan has no due date </p>
     {% endif %}
     <div> Note: {{ loan.description }} </div>
-    <p>{{ cat.description }}</p>
+    <p>{{ loan.description }}</p>
     <div class="loan-actions">
       <a href="{% url 'loan-update' loan.id %}" class="btn warn">Edit</a>
       <a href="{% url 'loan-delete' loan.id %}" class="btn danger">Delete</a>
